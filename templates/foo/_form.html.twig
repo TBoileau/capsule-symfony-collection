@@ -1,0 +1,43 @@
+{{ form_widget(form._token) }}
+                    {{ form_errors(form) }}
+                    {{ form_row(form.name) }}
+<button type="button" class="btn btn-primary btn-new" data-collection="#bars">New Bar</button>
+<div
+        id="bars"
+        class="row"
+        data-prototype="{{ include("foo/_bar.html.twig", {form: form.bars.vars.prototype})|e("html_attr") }}"
+        data-index="{{ form.bars|length > 0 ? form.bars|last.vars.name + 1 : 0 }}">
+    {% for bar in form.bars %}
+        <div class="col-4">
+            {{ include("foo/_bar.html.twig", {form: bar}) }}
+        </div>
+    {% endfor %}
+</div>
+{{ form_errors(form.bars) }}
+<button type="button" class="btn btn-primary btn-new" data-collection="#bazs">New Baz</button>
+<div
+        id="bazs"
+        class="row"
+        data-prototype="{{ include("foo/_baz.html.twig", {form: form.bazs.vars.prototype})|e("html_attr") }}"
+        data-index="{{ form.bazs|length > 0 ? form.bazs|last.vars.name + 1 : 0 }}">
+    {% for baz in form.bazs %}
+        <div class="col-4">
+            {{ include("foo/_baz.html.twig", {form: baz}) }}
+        </div>
+    {% endfor %}
+</div>
+{{ form_errors(form.bazs) }}
+
+<button type="button" class="btn btn-primary btn-new" data-collection="#quxes">New Baz</button>
+<div
+        id="quxes"
+        class="row"
+        data-prototype="{{ include("foo/_qux.html.twig", {form: form.quxes.vars.prototype})|e("html_attr") }}"
+        data-index="{{ form.quxes|length > 0 ? form.quxes|last.vars.name + 1 : 0 }}">
+    {% for qux in form.quxes %}
+        <div class="col-4">
+            {{ include("foo/_qux.html.twig", {form: qux}) }}
+        </div>
+    {% endfor %}
+</div>
+{{ form_errors(form.quxes) }}

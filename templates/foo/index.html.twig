@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path("foo_create") }}" class="btn btn-primary">Add Foo</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for foo in foos %}
+                            <tr>
+                                <td class="text-center">{{ foo.name }}</td>
+                                <td class="text-center">
+                                    <a href="{{ path("foo_update", {id: foo.id}) }}" class="btn btn-sm btn-primary">Update</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
